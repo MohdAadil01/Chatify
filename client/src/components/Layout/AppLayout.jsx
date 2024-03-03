@@ -5,6 +5,7 @@ import Header from "./Header";
 import ChatList from "../chats/ChatList";
 import { defaultChatData } from "../../contants";
 import { useParams } from "react-router-dom";
+import Profile from "../Profile/Profile";
 
 function AppLayout() {
   return (WrappedComponent) => {
@@ -52,7 +53,7 @@ function AppLayout() {
               }}
               height={"100%"}
             >
-              third
+              <Profile />
             </Grid>
           </Grid>
         </>
