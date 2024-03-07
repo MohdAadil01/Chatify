@@ -22,3 +22,14 @@ export const LinkComponent = styled(Link)`
     background-color: #f0f0f0;
   }
 `;
+
+export const MessageInput = styled("input")`
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 0rem 3rem;
+  border-radius: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+`;

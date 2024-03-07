@@ -13,10 +13,20 @@ import { USERS } from "../../contants";
 
 function NewGroup() {
   const [groupName, setGroupName] = useState("");
+  const [members, setMembers] = useState(USERS);
+  const [selectedMembers, setSelectedMembers] = useState([]);
+
   const groupNameHandler = (event) => {
     setGroupName(event.target.value);
   };
-  const selectMemberHandler = () => {};
+  const createHandler = () => {};
+  const selectMemberHandler = (_id) => {
+    setSelectedMembers((prev) =>
+      prev.includes(_id)
+        ? prev.filter((currentEl) => currentEl !== _id)
+        : [...prev, _id]
+    );
+  };
   return (
     <Dialog open>
       <Stack p={{ xs: "1rem", sm: "2rem" }} width={"30rem"} spacing={"1rem"}>
@@ -32,11 +42,12 @@ function NewGroup() {
           Members
         </Typography>
         <Stack>
-          {USERS.map((user) => (
+          {members.map((user) => (
             <UserItem
               key={user._id}
               user={user}
               handler={selectMemberHandler}
+              isAdded={selectedMembers.includes(user._id)}
             />
           ))}
         </Stack>
@@ -49,7 +60,9 @@ function NewGroup() {
           <Button variant="text" color="error">
             Cancel
           </Button>
-          <Button variant="contained">Create</Button>
+          <Button variant="contained" onClick={createHandler}>
+            Create
+          </Button>
         </Stack>
       </Stack>
     </Dialog>
