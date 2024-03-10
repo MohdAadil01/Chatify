@@ -28,8 +28,7 @@ export const MessageInput = styled("input")`
   height: 100%;
   border: none;
   outline: none;
-  color: white;
   padding: 0rem 3rem;
   border-radius: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
 `;

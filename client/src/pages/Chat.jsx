@@ -3,7 +3,14 @@ import AppLayout from "../components/Layout/AppLayout";
 import { IconButton, Stack } from "@mui/material";
 import { AttachFile, Send } from "@mui/icons-material";
 import { MessageInput } from "../components/styles/StyledComponents";
-import { colors } from "../contants";
+import { MESSAGES, colors } from "../contants";
+import FileMenu from "../components/dialogs/FileMenu";
+import MessageComponent from "../components/shared/MessageComponent";
+
+const user = {
+  _id: "sender_id",
+  name: "Mohd Aadil",
+};
 
 function Chat() {
   const containerRef = useRef(null);
@@ -14,14 +21,16 @@ function Chat() {
         boxSizing={"border-box"}
         padding={"1rem"}
         spacing={"1rem"}
-        bgcolor={"gray"}
+        bgcolor={"rgba(0,0,0,0.1)"}
         height={"90%"}
         sx={{
-          overflowY: "hidden",
+          overflowX: "hidden",
           overflowY: "auto",
         }}
       >
-        {/* render message */}
+        {MESSAGES.map((message, index) => (
+          <MessageComponent key={index} message={message} user={user} />
+        ))}
       </Stack>
       <form
         style={{
@@ -40,7 +49,6 @@ function Chat() {
               position: "absolute",
               left: "1.2rem",
               rotate: "45deg",
-              color: "white",
             }}
           >
             <AttachFile />
@@ -63,6 +71,7 @@ function Chat() {
           </IconButton>
         </Stack>
       </form>
+      <FileMenu />
     </>
   );
 }
